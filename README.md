@@ -38,4 +38,14 @@ As vivências neste projeto fortaleceram habilidades essenciais para a interface
   <img src="https://github.com/user-attachments/assets/e6a62476-5377-4f8c-82f7-ada70061dbcd" width="400" />
 
   <img src="https://github.com/user-attachments/assets/44c91b1f-f49d-4880-958a-90c00d1e72bd" width="400" />
+
+  <img src="https://github.com/user-attachments/assets/523e954c-f85a-405d-a0b2-ecf027a9008a" width="400" />
+
+  <img src="https://github.com/user-attachments/assets/a24478f1-9686-4480-a539-25de7d0a0f2c" width="400" />
+
+  <img src="https://github.com/user-attachments/assets/8fa4f7e3-97f1-4e05-9176-bda977b8b91a" width="400" />
+
+  <img src="https://github.com/user-attachments/assets/5a58fadb-7ef5-4f6b-a193-d43a2f16be85" width="400" />
+
+
 </p>
