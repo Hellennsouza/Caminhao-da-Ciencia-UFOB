@@ -1,3 +1,4 @@
+Registros e documentação das atividades de extensão do projeto itinerante Caminhão da Ciência (UFOB), com foco em divulgação científica, robótica e tecnologia.
 
 # 🚚 Caminhão da Ciência
 
