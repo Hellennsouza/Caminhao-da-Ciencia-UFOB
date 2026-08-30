@@ -1,0 +1,131 @@
+/*******************************************************************************
+*
+*    Projeto 25 – Criando cores em um LED RGB utilizando um potenciômetro
+*    
+*
+*******************************************************************************/
+  
+// Define as conexões para cada cor do RGB
+const int R = 9;
+const int G = 10;
+const int B = 11;
+int intensidadeR;
+int intensidadeG;
+int intensidadeB;
+ 
+// Armazena os valores para cada cor entre (0-255)
+int ValorR=255;
+int ValorG=0;
+int ValorB=0;
+ 
+// Define as conexões do botão seletor e do potenciomentro (analógico)
+const int seletor = 2;
+const int pot = A2;
+ 
+// Define as conexões do LED RGB e acionador
+const int ledRGB = 7; // botão acionador
+const int Red = 3;
+const int Green = 5;
+const int Blue = 6;
+ 
+void setup() 
+{ 
+// Define Monitor Serial (visualização de dados)
+  Serial.begin(9600); // taxa de comunicação entre Arduino e PC
+   
+// Indica que os pinos dos botões são de SAÍDA do Arduino 
+  pinMode(R, OUTPUT);
+  pinMode(G, OUTPUT);
+  pinMode(B, OUTPUT);
+  pinMode(seletor, INPUT);
+  pinMode(Red, OUTPUT);
+  pinMode(Green, OUTPUT);
+  pinMode(Blue, OUTPUT);
+  pinMode(ledRGB, INPUT);
+  pinMode(pot, INPUT);
+   
+  analogWrite(R, 255);  //coloca valor inicial para vermeho (padrão inicial)
+} 
+  
+// Valor padrão inicial (pinLed): vermelho
+// 0= Vermelho, 1 = Verde, 2 = Azul
+int pinLed = 0;
+int pinLed2 = 0;
+  
+void loop() 
+{ 
+         
+   if (digitalRead(seletor) == HIGH) 
+   {
+      pinLed2 = 0;
+      pinLed++; 
+       
+      // Limita o número de cores
+      if (pinLed > 2) { pinLed=0; }
+    
+      // Apagamos todas as cores
+      analogWrite(R, 0);
+      analogWrite(G, 0);
+      analogWrite(B, 0); 
+ 
+      analogWrite(Red, 0);
+      analogWrite(Green, 0);
+      analogWrite(Blue, 0);
+       
+      // Espera soltar o botão seletor
+      while (digitalRead(seletor) == HIGH) {  }            
+      delay(10); //
+   }
+ 
+    //define valor do potenciômetro
+     int valPoten = analogRead(pot);
+     if (pinLed == 0) { intensidadeR = map(valPoten,0,1023,0,255);}
+     if (pinLed == 1) { intensidadeG = map(valPoten,0,1023,0,255);}
+     if (pinLed == 2) { intensidadeB = map(valPoten,0,1023,0,255); }
+     Serial.print("R = ");
+     Serial.print(intensidadeR);
+     Serial.print(" | G= ");
+     Serial.print(intensidadeG);
+     Serial.print(" | B= ");
+     Serial.println(intensidadeB);
+ 
+     delay(50);
+    
+    // Atualiza variáveis com valores do potenciômetro
+    
+     if (pinLed == 0) { ValorR = intensidadeR; }
+     if (pinLed == 1) { ValorG = intensidadeG; }
+     if (pinLed == 2) { ValorB = intensidadeB; }
+      
+     delay(10);
+     
+    // Atualiza o valor da cor selecionada se o Led2 estiver desligado
+    if (pinLed2 ==0) {
+    if (pinLed == 0) { analogWrite(R, ValorR); }
+    if (pinLed == 1) { analogWrite(G, ValorG); }
+    if (pinLed == 2) { analogWrite(B, ValorB); }
+    }
+     
+    if (digitalRead(ledRGB) == HIGH) {
+      pinLed2 = 1;
+      // Apagamos todas as cores
+      analogWrite(R, 0);
+      analogWrite(G, 0);
+      analogWrite(B, 0); 
+    }            
+       
+    // Espera soltar o botão seletor
+      while (digitalRead(ledRGB) == HIGH) {  
+      delay(10); //
+ 
+      analogWrite(Red, ValorR);
+      analogWrite(Green, ValorG);
+      analogWrite(Blue, ValorB);
+       
+      // Apagamos todas as cores
+      analogWrite(R, 0);
+      analogWrite(G, 0);
+      analogWrite(B, 0);  
+       
+      } 
+}
