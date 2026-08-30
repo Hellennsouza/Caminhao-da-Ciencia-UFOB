@@ -1,0 +1,33 @@
+ #include <Servo.h>
+
+//Controle
+int lemao = A1;
+int leantebraco = A0;
+int lebase = A2;
+int leponta = A3;
+
+Servo atantebraco;
+Servo atmao;
+Servo base;
+Servo ponta;
+
+void setup() {  
+  Serial.begin(9600);
+  //Controle
+  pinMode(lemao, INPUT);
+  pinMode(leantebraco, INPUT);
+  //BraÃ§o
+  atantebraco.attach(12);
+  atmao.attach(11);
+  base.attach(13);
+  ponta.attach(10);
+}
+
+void loop() {
+  atmao.write(map(analogRead(lemao),0,1024,0,180));
+  atantebraco.write(map(analogRead(leantebraco),0,1024,80,180));
+  Serial.println(analogRead(leantebraco));
+  base.write(map(analogRead(lebase),0,1024,180,0));
+  ponta.write(map(analogRead(leponta),1024,0,0,180));
+  delay(10);
+}
