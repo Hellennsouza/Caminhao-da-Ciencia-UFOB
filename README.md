@@ -1,5 +1,5 @@
 
-# 🚚 Caminhão da Ciência & Robótica de Garagem
+# 🚚 Caminhão da Ciência
 
 Este repositório reúne registros da minha participação nos projetos de extensão itinerantes da Universidade Federal do Oeste da Bahia (UFOB). O objetivo central dessas iniciativas foi democratizar o acesso ao conhecimento científico e tecnológico, levando experiências práticas e robótica para fora dos muros da universidade.
 
